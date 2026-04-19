@@ -16,16 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from product import views as product_views
-from location import views as location_views
-from account import views as account_views
+from product import urls as product_urls
+from location import urls as location_urls
+from account import urls as account_urls
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("login/", account_views.login, name="login"),
-    path("register/", account_views.register, name="register"),
     path('admin/', admin.site.urls),
-    # path("product/", include(product_views.urls)),
-    # path("location/", include(location_views.urls)),
+    path("user/", include(account_urls)),
+    path("product/", include(product_urls)),
+    path("location/", include(location_urls)),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
