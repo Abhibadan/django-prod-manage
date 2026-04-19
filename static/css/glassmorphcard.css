@@ -1,0 +1,269 @@
+/* ─── Card: Pure Glass ─── */
+.card {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 100%
+    ) !important;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: none !important;
+    border-radius: 20px !important;
+    outline: 1px solid rgba(255, 255, 255, 0.13);
+    outline-offset: -1px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),   /* top highlight */
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25),         /* bottom depth */
+        inset 1px 0 0 rgba(255, 255, 255, 0.08),    /* left edge */
+        0 24px 48px rgba(0, 0, 0, 0.45),            /* deep ambient */
+        0 8px 16px rgba(0, 0, 0, 0.3) !important;
+    color: #f8fafc !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top-left corner light catch */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        transparent 50%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.5) 40%,
+        rgba(255, 255, 255, 0.5) 60%,
+        transparent
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.card-body { position: relative; z-index: 2; }
+
+/* ─── Input Group Icons ─── */
+.input-group-text {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-right: none !important;
+    color: rgba(255, 255, 255, 0.45) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.25s ease;
+}
+
+/* ─── Form Controls ─── */
+.form-control {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-left: none !important;
+    color: #f8fafc !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.25s ease;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Whole input group glows together on focus */
+.input-group:focus-within .form-control,
+.input-group:focus-within .input-group-text {
+    background: rgba(255, 255, 255, 0.09) !important;
+    border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.form-control:focus {
+    box-shadow:
+        inset 0 1px 3px rgba(0, 0, 0, 0.2),
+        0 0 0 3px rgba(255, 255, 255, 0.07),
+        0 0 20px rgba(255, 255, 255, 0.06) !important;
+    outline: none !important;
+}
+
+/* ─── Labels ─── */
+.form-label {
+    color: rgba(255, 255, 255, 0.45) !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.1em;
+    font-weight: 600 !important;
+}
+
+/* ─── Checkbox ─── */
+.form-check-input {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.form-check-input:checked {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e") !important;
+}
+
+/* ─── Divider ─── */
+hr {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    opacity: 1 !important;
+}
+
+/* ─── Alert errors ─── */
+.alert-danger {
+    background: rgba(248, 113, 113, 0.08) !important;
+    border: 1px solid rgba(248, 113, 113, 0.2) !important;
+    color: #fca5a5 !important;
+    backdrop-filter: blur(10px);
+    border-radius: 12px !important;
+}
+
+/* ─── Primary Button: Glass ─── */
+.btn-primary {
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border: none !important;
+    outline: 1px solid rgba(255, 255, 255, 0.18) !important;
+    outline-offset: -1px;
+    color: #fff !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.78rem !important;
+    border-radius: 12px !important;
+    padding: 0.72rem 1.5rem !important;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.25s ease !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 8px 24px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Top highlight sweep */
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.6) 30%,
+        rgba(255, 255, 255, 0.6) 70%,
+        transparent
+    );
+}
+
+/* Shimmer on hover */
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    border-radius: 12px;
+}
+
+.btn-primary:hover {
+    background: rgba(255, 255, 255, 0.14) !important;
+    outline: 1px solid rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-2px);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 14px 32px rgba(0, 0, 0, 0.4),
+        0 0 24px rgba(255, 255, 255, 0.06) !important;
+}
+
+.btn-primary:hover::after { opacity: 1; }
+
+.btn-primary:active {
+    transform: translateY(0px) !important;
+    background: rgba(255, 255, 255, 0.06) !important;
+    box-shadow:
+        inset 0 2px 6px rgba(0, 0, 0, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ─── Secondary / Ghost Button ─── */
+.btn-secondary, .btn-outline {
+    background: transparent !important;
+    border: none !important;
+    outline: 1px solid rgba(255, 255, 255, 0.12) !important;
+    outline-offset: -1px;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 0.78rem !important;
+    letter-spacing: 0.06em;
+    border-radius: 12px !important;
+    transition: all 0.25s ease !important;
+}
+
+.btn-secondary:hover, .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.06) !important;
+    outline-color: rgba(255, 255, 255, 0.22) !important;
+    color: #fff !important;
+}
+
+/* ─── Hyperlinks ─── */
+a {
+    color: rgba(255, 255, 255, 0.65) !important;
+    text-decoration: none !important;
+    position: relative;
+    transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+
+/* Animated underline */
+a::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0;
+    width: 0%; height: 1px;
+    background: rgba(255, 255, 255, 0.6);
+    transition: width 0.25s ease;
+}
+
+a:hover {
+    color: #fff !important;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.35) !important;
+}
+
+a:hover::after { width: 100%; }
+
+/* ─── Accent links (register, forgot password) ─── */
+.text-primary a,
+a.text-primary,
+a.fw-semibold {
+    color: rgba(180, 160, 255, 0.85) !important;
+    text-shadow: none !important;
+}
+
+a.text-primary:hover,
+a.fw-semibold:hover {
+    color: rgba(210, 195, 255, 1) !important;
+    text-shadow: 0 0 14px rgba(180, 160, 255, 0.45) !important;
+}
+
+a.text-primary::after,
+a.fw-semibold::after {
+    background: rgba(180, 160, 255, 0.6);
+}

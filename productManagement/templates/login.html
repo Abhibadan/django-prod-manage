@@ -1,0 +1,104 @@
+{% extends "auth_layout.html" %}
+
+{% block title %}Login{% endblock %}
+{% block meta_description %}Login to Product Management System{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block content %}
+<div class="card card-glass shadow-lg border-0 rounded-4" style="max-width: 400px; width: 100%;">
+  <div class="card-body p-4 p-md-5">
+    
+    <!-- Brand -->
+    <div class="text-center mb-4">
+      <div class="display-4 mb-2">🛒</div>
+      <h1 class="h3 fw-bold text-primary">ProductManager</h1>
+      <p class="text-secondary">Sign in to your account</p>
+    </div>
+
+    <!-- Server-side errors -->
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger p-2 mb-4 border-0" style="background: rgba(248, 113, 113, 0.1); color: #fca5a5;">
+      <ul class="mb-0 ps-3">
+        {% for error in form.non_field_errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- Login form -->
+    <form method="post" id="login-form" novalidate>
+      {% csrf_token %}
+
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="id_username" class="form-label fw-semibold text-secondary small text-uppercase">Username</label>
+        <div class="input-group">
+          <span class="input-group-text border-end-0"><i class="bi bi-person"></i></span>
+          <input
+            type="text"
+            id="id_username"
+            name="username"
+            class="form-control border-start-0 ps-0 {% if form.username.errors %}is-invalid{% endif %}"
+            placeholder="Enter your username"
+            autocomplete="username"
+            required
+            value="{{ form.username.value|default:'' }}"
+          >
+        </div>
+        {% if form.username.errors %}
+          <div class="text-danger small mt-1">
+            {% for e in form.username.errors %}{{ e }}{% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label for="id_password" class="form-label fw-semibold text-secondary small text-uppercase">Password</label>
+        <div class="input-group">
+          <span class="input-group-text border-end-0"><i class="bi bi-lock"></i></span>
+          <input
+            type="password"
+            id="id_password"
+            name="password"
+            class="form-control border-start-0 ps-0 {% if form.password.errors %}is-invalid{% endif %}"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          >
+        </div>
+        {% if form.password.errors %}
+          <div class="text-danger small mt-1">
+            {% for e in form.password.errors %}{{ e }}{% endfor %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Options -->
+      <div class="d-flex justify-content-between align-items-center mb-4 small">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" name="remember" id="remember">
+          <label class="form-check-label text-secondary" for="remember">Remember me</label>
+        </div>
+        <a href="/forgot-password/" class="text-primary text-decoration-none">Forgot password?</a>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary w-100 py-2 rounded-3 fw-semibold shadow-sm">Sign In <i class="bi bi-arrow-right ms-1"></i></button>
+    </form>
+
+    <div class="position-relative my-4">
+      <hr class="text-secondary" style="opacity: 0.2;">
+      <div class="position-absolute top-50 start-50 translate-middle px-3 small" style="background: rgba(30, 41, 59, 1); color: #94a3b8; border-radius: 12px;">or</div>
+    </div>
+
+    <p class="text-center small text-secondary mb-0">
+      Don't have an account? <a href="/register/" class="text-primary text-decoration-none fw-semibold">Create one</a>
+    </p>
+
+  </div>
+</div>
+{% endblock %}
