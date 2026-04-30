@@ -1,0 +1,38 @@
+<aside class="sidebar d-flex flex-column flex-shrink-0" id="sidebar">
+    <div class="sidebar-header text-center fs-5 text-white">
+        <i class="bi bi-rocket-takeoff text-primary me-2"
+            style="background: linear-gradient(135deg, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i><span
+            class="fw-bold">
+            {% if request.session.role == "admin" %}
+                PMgr Admin
+            {% elif request.session.role == "Location Manager" %}
+                PMgr Location Manager
+            {% elif request.session.role == "buyer" %}
+                PMgr Customer
+            {% elif request.session.role == "Seller" %}
+                PMgr Vendor
+            {% endif %}
+            </span>
+    </div>
+    
+    <ul class="nav flex-column mb-auto py-3">
+        <li class="nav-item"><a href="/" class="nav-link"><i class="bi bi-grid-1x2-fill me-3"></i>Dashboard</a></li>
+        <li class="nav-item"><a href="/product/" class="nav-link"><i class="bi bi-box-seam-fill me-3"></i>Products</a>
+        </li>
+        {% if request.session.role == "Seller" %}
+        <li class="nav-item"><a href="/orders/" class="nav-link"><i class="bi bi-receipt me-3"></i>Orders</a></li>
+        {% endif %}
+        {% if request.session.role == "buyer" %}
+        <li class="nav-item"><a href="/buy/" class="nav-link"><i class="bi bi-receipt me-3"></i>Your Orders</a></li>
+        {% endif %}
+
+        {% if request.session.role == "Location Manager" %}
+        <li class="nav-item"><a href="/location/" class="nav-link"><i class="bi bi-geo-alt-fill me-3"></i>Locations</a>
+        </li>
+        {% endif %}
+    </ul>
+    <div class="p-4 text-center small text-secondary border-top"
+        style="border-color: rgba(255,255,255,0.05) !important;">
+        &copy; {% now "Y" %} ProductManager
+    </div>
+</aside>

@@ -21,8 +21,10 @@ from location import urls as location_urls
 from account import urls as account_urls
 from django.conf import settings
 from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
+    path("", views.dashboard, name="dashboard"),
     path('admin/', admin.site.urls),
     path("user/", include(account_urls)),
     path("product/", include(product_urls)),
